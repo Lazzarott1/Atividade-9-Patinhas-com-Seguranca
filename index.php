@@ -55,7 +55,7 @@ if (!$animais) {
                         <td><?php echo htmlspecialchars($cliente["nome_cliente"]) ?></td>
                         <td>
                             <a href="public/editar_cliente.php?id_cliente=<?php echo urlencode($cliente["id_cliente"]) ?>">Editar</a>
-                            <a href="public/deletar_cliente.php?id_cliente=<?php echo urlencode($cliente["id_cliente"]) ?>">Excluir</a>
+                            <a href="public/excluir_cliente.php?id_cliente=<?php echo urlencode($cliente["id_cliente"]) ?>">Excluir</a>
                         </td>
                     </tr>
                 <?php } ?>
