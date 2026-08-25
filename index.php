@@ -109,7 +109,7 @@ if (!$animais) {
                         <td><?php echo htmlspecialchars($animal["idade"]) ?></td>
                         <td><?php echo htmlspecialchars($animal["nome_responsavel"]) ?></td>
                         <td>
-                            <a href="public/editar_animal.php?id_pet=<?php echo urlencode($animal["id_pet"]) ?>">Editar</a>
+                            <a href="public/editar_animais.php?id_pet=<?php echo urlencode($animal["id_pet"]) ?>">Editar</a>
                             <a href="public/deletar_animal.php?id_pet=<?php echo urlencode($animal["id_pet"]) ?>">Excluir</a>
                         </td>
                     </tr>
