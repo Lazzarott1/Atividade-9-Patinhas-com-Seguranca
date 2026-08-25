@@ -9,7 +9,7 @@ if (!$clientes) {
     die("Erro na consulta: " . mysqli_error($conexao));
 }
 
-$animais = mysqli_query($conexao, "SELECT nome_animal, especie, raca, idade, clientes.nome_cliente AS nome_responsavel FROM animais JOIN clientes ON animais.id_responsavel = clientes.id_cliente");
+$animais = mysqli_query($conexao, "SELECT id_pet, nome_animal, especie, raca, idade, clientes.nome_cliente AS nome_responsavel FROM animais JOIN clientes ON animais.id_responsavel = clientes.id_cliente");
 
 if (!$animais) {
     die("Erro na consulta: " . mysqli_error($conexao));
