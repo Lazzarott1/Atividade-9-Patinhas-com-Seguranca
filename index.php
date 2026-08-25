@@ -3,7 +3,7 @@
 include "infra/conexao.php";
 
 
-$clientes = mysqli_query($conexao, "SELECT id_cliente, nome_cliente FROM clientes");
+$clientes = mysqli_query($conexao, "SELECT * FROM clientes");
 
 if (!$clientes) {
     die("Erro na consulta: " . mysqli_error($conexao));
@@ -49,13 +49,13 @@ if (!$animais) {
                     <th>Ações</th>
                 </tr>
 
-                <?php while ($clientes = mysqli_fetch_assoc($clientes)) { ?>
+                <?php while ($cliente = mysqli_fetch_assoc($clientes)) { ?>
                     <tr>
-                        <td><?php echo htmlspecialchars($clientes["id_cliente"]) ?></td>
-                        <td><?php echo htmlspecialchars($clientes["nome_cliente"]) ?></td>
+                        <td><?php echo htmlspecialchars($cliente["id_cliente"]) ?></td>
+                        <td><?php echo htmlspecialchars($cliente["nome_cliente"]) ?></td>
                         <td>
-                            <a href="public/editar.php?id_cliente=<?php echo urlencode($clientes["id_cliente"]) ?>">Editar</a>
-                            <a href="public/deletar.php?id_cliente=<?php echo urlencode($clientes["id_cliente"]) ?>">Excluir</a>
+                            <a href="public/editar_cliente.php?id_cliente=<?php echo urlencode($cliente["id_cliente"]) ?>">Editar</a>
+                            <a href="public/deletar_cliente.php?id_cliente=<?php echo urlencode($cliente["id_cliente"]) ?>">Excluir</a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -78,8 +78,9 @@ if (!$animais) {
             <br>
             <label for="nome_cliente">Responsável:</label>
             <select name="nome_cliente" id="nome_cliente" required>
+                <?php $clientes = mysqli_query($conexao, "SELECT * FROM clientes"); ?>
                 <?php while ($cliente = mysqli_fetch_assoc($clientes)) { ?>
-                    <option value="<?php echo $cliente["nome_cliente"] ?>"><?php echo $cliente["nome_cliente"] ?></option>
+                    <option value="<?php echo htmlspecialchars($cliente["id_cliente"]) ?>"><?php echo htmlspecialchars($cliente["nome_cliente"]) ?></option>
                 <?php } ?>
             </select>
             <br>
@@ -99,17 +100,17 @@ if (!$animais) {
                     <th>Ações</th>
                 </tr>
 
-                <?php while ($animais = mysqli_fetch_assoc($animais)) { ?>
+                <?php while ($animal = mysqli_fetch_assoc($animais)) { ?>
                     <tr>
-                        <td><?php echo htmlspecialchars($animais["id_pet"]) ?></td>
-                        <td><?php echo htmlspecialchars($animais["nome_animal"]) ?></td>
-                        <td><?php echo htmlspecialchars($animais["especie"]) ?></td>
-                        <td><?php echo htmlspecialchars($animais["raca"]) ?></td>
-                        <td><?php echo htmlspecialchars($animais["idade"]) ?></td>
-                        <td><?php echo htmlspecialchars($animais["nome_responsavel"]) ?></td>
+                        <td><?php echo htmlspecialchars($animal["id_pet"]) ?></td>
+                        <td><?php echo htmlspecialchars($animal["nome_animal"]) ?></td>
+                        <td><?php echo htmlspecialchars($animal["especie"]) ?></td>
+                        <td><?php echo htmlspecialchars($animal["raca"]) ?></td>
+                        <td><?php echo htmlspecialchars($animal["idade"]) ?></td>
+                        <td><?php echo htmlspecialchars($animal["nome_responsavel"]) ?></td>
                         <td>
-                            <a href="public/editar.php?id_pet=<?php echo urlencode($animais["id_pet"]) ?>">Editar</a>
-                            <a href="public/deletar.php?id_pet=<?php echo urlencode($animais["id_pet"]) ?>">Excluir</a>
+                            <a href="public/editar_animal.php?id_pet=<?php echo urlencode($animal["id_pet"]) ?>">Editar</a>
+                            <a href="public/deletar_animal.php?id_pet=<?php echo urlencode($animal["id_pet"]) ?>">Excluir</a>
                         </td>
                     </tr>
                 <?php } ?>
