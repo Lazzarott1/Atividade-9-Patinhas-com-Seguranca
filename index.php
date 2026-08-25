@@ -63,7 +63,7 @@ if (!$animais) {
         </div>
 
         <h2>Cadastrar Animal!</h2>
-        <form action="public/cadastrar_animal.php" method="POST">
+        <form action="public/cadastrar_animais.php" method="POST">
             <label for="nome_animal">Nome:</label>
             <input type="text" id="nome_animal" name="nome_animal" required>
             <br>
@@ -76,8 +76,8 @@ if (!$animais) {
             <label for="idade">Idade:</label>
             <input type="number" id="idade" name="idade" required>
             <br>
-            <label for="nome_cliente">Responsável:</label>
-            <select name="nome_cliente" id="nome_cliente" required>
+            <label for="id_cliente">Responsável:</label>
+            <select name="id_cliente" id="id_cliente" required>
                 <?php $clientes = mysqli_query($conexao, "SELECT * FROM clientes"); ?>
                 <?php while ($cliente = mysqli_fetch_assoc($clientes)) { ?>
                     <option value="<?php echo htmlspecialchars($cliente["id_cliente"]) ?>"><?php echo htmlspecialchars($cliente["nome_cliente"]) ?></option>
