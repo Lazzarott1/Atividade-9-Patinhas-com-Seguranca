@@ -7,7 +7,7 @@ create table clientes (
 );
 
 create table animais (
-    id_pet int primary key auto_increment,
+    id_animal int primary key auto_increment,
     nome_animal varchar(100) not null,
     especie varchar(50) not null,
     raca varchar(50) not null,

@@ -9,7 +9,7 @@ if (!$clientes) {
     die("Erro na consulta: " . mysqli_error($conexao));
 }
 
-$animais = mysqli_query($conexao, "SELECT id_pet, nome_animal, especie, raca, idade, clientes.nome_cliente AS nome_responsavel FROM animais JOIN clientes ON animais.id_responsavel = clientes.id_cliente");
+$animais = mysqli_query($conexao, "SELECT id_animal, nome_animal, especie, raca, idade, clientes.nome_cliente AS nome_responsavel FROM animais JOIN clientes ON animais.id_responsavel = clientes.id_cliente");
 
 if (!$animais) {
     die("Erro na consulta: " . mysqli_error($conexao));
@@ -102,15 +102,15 @@ if (!$animais) {
 
                 <?php while ($animal = mysqli_fetch_assoc($animais)) { ?>
                     <tr>
-                        <td><?php echo htmlspecialchars($animal["id_pet"]) ?></td>
+                        <td><?php echo htmlspecialchars($animal["id_animal"]) ?></td>
                         <td><?php echo htmlspecialchars($animal["nome_animal"]) ?></td>
                         <td><?php echo htmlspecialchars($animal["especie"]) ?></td>
                         <td><?php echo htmlspecialchars($animal["raca"]) ?></td>
                         <td><?php echo htmlspecialchars($animal["idade"]) ?></td>
                         <td><?php echo htmlspecialchars($animal["nome_responsavel"]) ?></td>
                         <td>
-                            <a href="public/editar_animais.php?id_pet=<?php echo urlencode($animal["id_pet"]) ?>">Editar</a>
-                            <a href="public/deletar_animal.php?id_pet=<?php echo urlencode($animal["id_pet"]) ?>">Excluir</a>
+                            <a href="public/editar_animais.php?id_animal=<?php echo urlencode($animal["id_animal"]) ?>">Editar</a>
+                            <a href="public/deletar_animal.php?id_animal=<?php echo urlencode($animal["id_animal"]) ?>">Excluir</a>
                         </td>
                     </tr>
                 <?php } ?>
